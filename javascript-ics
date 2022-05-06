@@ -1,0 +1,49 @@
+<br/>
+<button type="button" class="button1" onclick="loadDoc1()">START</button>
+
+<p id="demo"></p>
+
+<style>
+.button1 {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+
+</style>
+<script>
+function loadDoc1() {
+
+  var tester = new Image();
+tester.onload = function() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       
+        var response = xhttp.responseText;
+        console.log("reponse "+response);
+    }
+};
+xhttp.open("GET", "http://192.168.2.1/cgi-bin/sms_send?username=sms&password=sms&number=00221770428558&text=DOUT(1)=1", true);
+
+xhttp.send();
+
+alert("requete en cours.");
+
+};
+tester.onerror = function() {
+  alert("vous n'etes pas authorise.");
+};
+tester.src="http://192.168.2.1/luci-static/resources/logo.png"
+}
+
+
+</script>
